@@ -47,8 +47,6 @@ C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\bin\Debug\netcoreapp3.1\run
 C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
 C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\obj\Debug\netcoreapp3.1\OrenHakaton.csproj.CopyComplete
-C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\obj\Debug\netcoreapp3.1\OrenHakaton.csproj.CoreCompileInputs.cache
-C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\obj\Debug\netcoreapp3.1\OrenHakaton.MvcApplicationPartsAssemblyInfo.cache
 C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\bin\Debug\netcoreapp3.1\OrenHakaton.deps.json
 C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\bin\Debug\netcoreapp3.1\OrenHakaton.runtimeconfig.json
 C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\bin\Debug\netcoreapp3.1\OrenHakaton.runtimeconfig.dev.json
@@ -58,3 +56,7 @@ C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\bin\Debug\netcoreapp3.1\Mic
 C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\obj\Debug\netcoreapp3.1\OrenHakaton.dll
 C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\obj\Debug\netcoreapp3.1\OrenHakaton.pdb
 C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\obj\Debug\netcoreapp3.1\OrenHakaton.genruntimeconfig.cache
+C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\obj\Debug\netcoreapp3.1\OrenHakaton.csprojAssemblyReference.cache
+C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\obj\Debug\netcoreapp3.1\OrenHakaton.csproj.CoreCompileInputs.cache
+C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\obj\Debug\netcoreapp3.1\OrenHakaton.MvcApplicationPartsAssemblyInfo.cache
+C:\Work\oren-hakaton\backend\OrenHakaton\OrenHakaton\bin\Debug\netcoreapp3.1\NLog.dll
