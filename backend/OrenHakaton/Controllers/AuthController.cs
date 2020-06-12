@@ -23,10 +23,11 @@
             _context = new OrenHakatonContext();
         }
 
+        [Route("GetAllUsers")]
         [HttpGet]
         public async Task<List<Users>> Get()
         {
-            logger.Trace("Get all users");
+            logger.Trace("GetAllUsers called");
 
             return await _context.Users.ToListAsync();
         }
@@ -41,7 +42,7 @@
         [HttpPost]
         public ActionResult<Users> AddUser([FromBody] Users user)
         {
-            logger.Trace("Add User called");
+            logger.Trace("AddUser called");
 
             if (user == null)
                 return NoContent();
@@ -56,9 +57,9 @@
 
         [Route("CheckAuthoriz")]
         [HttpPost]
-        public async Task<Users> GetUser([FromBody] CheckUser user)
+        public async Task<Users> GetUser([FromBody] CheckUserDto user)
         {
-            logger.Trace("CheckUser");
+            logger.Trace("CheckAuthoriz called");
 
             var dbUser = await _context.Users.FirstOrDefaultAsync(x => x.Mail == user.Mail);
 

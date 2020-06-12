@@ -1,6 +1,6 @@
 ﻿namespace OrenHakaton.Models
 {
-    public class CheckUser
+    public class CheckUserDto
     {
         public string Mail { get; set; }
         public string Password { get; set; }
