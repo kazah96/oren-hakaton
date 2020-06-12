@@ -1,10 +1,21 @@
 import React from 'react';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
-function App() {
+import Login from './component/Auth/login';
+import Register from './component/Auth/register';
+
+const LoginComponent = () => <Login />;
+const RegisterComponent = () => <Register />
+
+const App = () => {
   return (
-    <div className="App">
-      123
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/"   render={LoginComponent} />
+        <Route path="/login"   render={LoginComponent}/>
+        <Route path="/register"  render={RegisterComponent}/>
+      </Switch>
+    </Router>
   );
 }
 
