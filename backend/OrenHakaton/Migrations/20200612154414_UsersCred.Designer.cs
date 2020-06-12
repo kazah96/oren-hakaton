@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrenHakaton.Models;
 
 namespace OrenHakaton.Migrations
 {
     [DbContext(typeof(OrenHakatonContext))]
-    partial class OrenHakatonContextModelSnapshot : ModelSnapshot
+    [Migration("20200612154414_UsersCred")]
+    partial class UsersCred
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -5,14 +5,15 @@ namespace OrenHakaton
     using Microsoft.Extensions.Hosting;
     using OrenHakaton.Models;
 
-    using NLog;
+    using NLog.Web;
 
     public class Program
     {
-        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
-
         public static void Main(string[] args)
         {
+            var logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            logger.Debug("init main");
+
             CreateHostBuilder(args).Build().Run();
 
             //using (var db = new OrenHakatonContext())
