@@ -1,15 +1,15 @@
 ﻿namespace OrenHakaton.Controllers
 {
+    using System.Text;
+    using System.Threading.Tasks;
     using System.Collections.Generic;
+    using System.Security.Cryptography;
+
     using Microsoft.AspNetCore.Mvc;
-    using OrenHakaton.Models;
+    using Microsoft.EntityFrameworkCore;
 
     using NLog;
-    using System.Linq;
-    using Microsoft.EntityFrameworkCore;
-    using System.Threading.Tasks;
-    using System.Security.Cryptography;
-    using System.Text;
+    using OrenHakaton.Models;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -26,11 +26,7 @@
         [HttpGet]
         public async Task<List<Users>> Get()
         {
-            var qwe = new List<Users>();
-            logger.Trace("Get users1");
-
-            // Read
-            logger.Trace("Get users2");
+            logger.Trace("Get all users");
 
             return await _context.Users.ToListAsync();
         }
@@ -38,26 +34,20 @@
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+            return $"value{id}";
         }
 
         [Route("AddUser")]
         [HttpPost]
         public ActionResult<Users> AddUser([FromBody] Users user)
         {
-            logger.Trace("Add User");
+            logger.Trace("Add User called");
 
             if (user == null)
                 return NoContent();
 
-            var sha1 = new SHA1CryptoServiceProvider();
-            var data = Encoding.ASCII.GetBytes(user.Password);
-            var sha1data = sha1.ComputeHash(data);
+            user.Password = GetHashedPassword(user.Password);
 
-            user.Password = System.Text.Encoding.Default.GetString(sha1data);
-
-            // Create
-            logger.Trace("Add User");
             _context.Users.Add(user);
             _context.SaveChanges();
 
@@ -69,17 +59,13 @@
         public async Task<Users> GetUser([FromBody] CheckUser user)
         {
             logger.Trace("CheckUser");
-            var sha1 = new SHA1CryptoServiceProvider();
+
             var dbUser = await _context.Users.FirstOrDefaultAsync(x => x.Mail == user.Mail);
 
             if (dbUser == null)
                 return null;
 
-            var data = Encoding.ASCII.GetBytes(user.Password);
-            var sha1data = sha1.ComputeHash(data);
-            var pass = System.Text.Encoding.Default.GetString(sha1data);
-
-            if (dbUser.Password == pass)
+            if (dbUser.Password == GetHashedPassword(user.Password))
                 return dbUser;
 
             return null;
@@ -93,6 +79,15 @@
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        public string GetHashedPassword(string password)
+        {
+            var sha1 = new SHA1CryptoServiceProvider();
+            var data = Encoding.ASCII.GetBytes(password);
+            var sha1data = sha1.ComputeHash(data);
+
+            return Encoding.Default.GetString(sha1data);
         }
     }
 }
