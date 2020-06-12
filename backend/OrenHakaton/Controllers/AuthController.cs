@@ -6,6 +6,7 @@
     using System.Security.Cryptography;
 
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Cors;
     using Microsoft.EntityFrameworkCore;
 
     using NLog;
@@ -23,6 +24,7 @@
             _context = new OrenHakatonContext();
         }
 
+        [EnableCors("MyPolicy")]
         [Route("GetAllUsers")]
         [HttpGet]
         public async Task<List<Users>> Get()
@@ -32,6 +34,7 @@
             return await _context.Users.ToListAsync();
         }
 
+        [EnableCors("MyPolicy")]
         [Route("AddUser")]
         [HttpPost]
         public ActionResult<Users> AddUser([FromBody] Users user)
@@ -49,6 +52,7 @@
             return Ok(user);
         }
 
+        [EnableCors("MyPolicy")]
         [Route("CheckAuthoriz")]
         [HttpPost]
         public async Task<Users> GetUser([FromBody] CheckUserDto user)
