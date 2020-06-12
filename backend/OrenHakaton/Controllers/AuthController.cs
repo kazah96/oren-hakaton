@@ -32,12 +32,6 @@
             return await _context.Users.ToListAsync();
         }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return $"value{id}";
-        }
-
         [Route("AddUser")]
         [HttpPost]
         public ActionResult<Users> AddUser([FromBody] Users user)
@@ -70,16 +64,6 @@
                 return dbUser;
 
             return null;
-        }
-
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
 
         public string GetHashedPassword(string password)
