@@ -13,7 +13,7 @@ class UserApi extends RestApi {
   saveUser = data => {
     return this.postRestRequest({
       url: 'api/auth',
-      data
+      data: data.user
     }).then(result => {
       return Promise.resolve(result.content);
     });
