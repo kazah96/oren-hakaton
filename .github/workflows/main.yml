@@ -13,10 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build
+    - name: Build&install
       run: |
         cd client 
         yarn
+        yarn build
     - name: Eslint
       run: |
         cd client 
@@ -29,3 +30,7 @@ jobs:
       run: |
         cd client 
         yarn check:style
+    - name: Deploy test
+      run: |
+        cd client
+        yarn deploy:test
