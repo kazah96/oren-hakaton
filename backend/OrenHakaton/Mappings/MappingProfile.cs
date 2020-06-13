@@ -14,6 +14,9 @@
 
             CreateMap<Requests, RequestsDto>();
             CreateMap<RequestsDto, Requests>();
+
+            CreateMap<Houses, HousesDto>();
+            CreateMap<HousesDto, Houses>();
         }
     }
 }
