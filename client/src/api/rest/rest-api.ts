@@ -7,7 +7,7 @@ class RestApi {
 
   constructor(requestUrl: string) {
     this.requestUrl = requestUrl
-    this.apiUrl = 'https://55ac146c66b3.ngrok.io'
+    this.apiUrl = 'https://c156fc21fe8b.ngrok.io'
   }
 
   getRestRequest = (request: AxiosRequestConfig) => {

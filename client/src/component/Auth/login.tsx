@@ -25,9 +25,7 @@ const Login = () => {
   }) as any
 
   const onFinish = (data: any) => {
-    CheckUser(data).then(() => {
-      message.success('Вход выполнен')
-    })
+    CheckUser(data).then(() => message.success('Вход выполнен'))
   }
 
   return (

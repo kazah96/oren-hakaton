@@ -2,31 +2,30 @@ import RestApi from './rest-api'
 
 interface Data {
   user: {
-    name: string
+    address: string
   }
 }
-class UserApi extends RestApi {
+class HomesApi extends RestApi {
   constructor(requestUrl?: string) {
     super(requestUrl || '')
   }
 
-  CheckUser = (data: Data) => {
-    return this.postRestRequest({
-      url: 'api/Entities/get/Authorization',
-      data: data.user,
+  getAllHouses = () => {
+    return this.getRestRequest({
+      url: 'api/Entities/GetAll/Houses',
     }).then((result) => {
       return Promise.resolve(result)
     })
   }
 
-  saveUser = (data: Data) => {
+  saveHome = (data: Data) => {
     return this.postRestRequest({
-      url: 'api/Entities/Add/Authorization',
-      data: data.user,
+      url: 'api/Entities/Add/Houses',
+      data,
     }).then((result) => {
       return Promise.resolve(result)
     })
   }
 }
 
-export default UserApi
+export default HomesApi
