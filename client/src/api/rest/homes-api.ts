@@ -10,11 +10,18 @@ class HomesApi extends RestApi {
     super(requestUrl || '')
   }
 
+  getAllHouses = () => {
+    return this.getRestRequest({
+      url: 'api/Entities/GetAll/Houses',
+    }).then((result) => {
+      return Promise.resolve(result)
+    })
+  }
+
   saveHome = (data: Data) => {
-    debugger
     return this.postRestRequest({
       url: 'api/Entities/Add/Houses',
-      data: data.user,
+      data,
     }).then((result) => {
       return Promise.resolve(result)
     })

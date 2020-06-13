@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal } from 'antd'
 
 import Form from './Form'
@@ -11,9 +11,15 @@ const defaultForm = {
 
 // @ts-ignore
 const CreatingModal = ({ visible, onCancel, onSubmitForm, defaultFormData, okText }) => {
-  const onSubmit = (data: any) => {
+  const [formData, setFormData] = useState(defaultFormData || defaultForm)
+
+  const handleFormChange = (payload: any) => {
+    setFormData({ ...formData, ...payload })
+  }
+
+  const onSubmit = () => {
     debugger
-    onSubmitForm(data)
+    onSubmitForm(formData)
   }
 
   return (
@@ -28,7 +34,7 @@ const CreatingModal = ({ visible, onCancel, onSubmitForm, defaultFormData, okTex
       destroyOnClose
     >
       <div className="create_modal">
-        <Form formData={defaultFormData || defaultForm} />
+        <Form formData={defaultFormData || defaultForm} onChangeForm={handleFormChange} />
       </div>
     </Modal>
   )

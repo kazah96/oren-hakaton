@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, message } from 'antd'
 
 import CreatingModal from './CreatingModal'
@@ -13,8 +13,16 @@ const defaultModalSettings = {
 
 const Homes = () => {
   const [creactingModalSettings, setCreactingModalSettings] = useState(defaultModalSettings)
+  const [tableData, setTableData] = useState(false)
 
-  const { saveHome } = useApi({
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    getAllHouses().then((result: any) => {
+      !tableData && setTableData(result.map((item: any) => ({ ...item, key: item.houseId })))
+    })
+  }, [tableData])
+
+  const { saveHome, getAllHouses } = useApi({
     api: HomesApi,
   }) as any
 
@@ -43,6 +51,7 @@ const Homes = () => {
     handleCancelCreatingModal()
   }
 
+  console.log('aaaa', tableData)
   return (
     <div>
       <Button type="primary" onClick={handleAddItemClick}>
@@ -55,7 +64,7 @@ const Homes = () => {
         onCancel={handleCancelCreatingModal}
         onSubmitForm={handleSubmitCreatingForm}
       />
-      <TableComponents />
+      <TableComponents tableData={tableData} />
     </div>
   )
 }
