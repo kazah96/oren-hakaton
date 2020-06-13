@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Form, Input, Button, message } from 'antd';
-import { useApi, UserApi } from '../../api/index';
+import { Form, Input, Button, message } from 'antd'
+import { useApi, UserApi } from '../../api'
 
 const layout = {
   labelCol: { span: 10 },
@@ -20,12 +20,11 @@ const Login = () => {
     CheckUser
   } = useApi({
     api: UserApi
-  });
+  }) as any
 
   const onFinish = (data: any) => {
     CheckUser(data)
-        .then((result: any) => {
-          debugger
+        .then(() => {
           message.success('Вход выполнен');
         })
   };

@@ -25,7 +25,7 @@ const Register = () => {
 
   const onFinish = (data: any) => {
     saveUser(data)
-        .then((result: any) => {
+        .then(() => {
           message.success('Успешно добавлен');
         })
   };
