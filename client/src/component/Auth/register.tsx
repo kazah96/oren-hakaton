@@ -7,12 +7,14 @@ const layout = {
   wrapperCol: { span: 5 },
 }
 
+/* eslint-disable */
 const validateMessages = {
   required: '${label} обязательное поле!',
   types: {
     email: '${label} не правильный формат!',
   },
 }
+/* eslint-enable */
 
 const Register = () => {
   const { saveUser } = useApi({
