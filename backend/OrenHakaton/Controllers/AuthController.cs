@@ -1,82 +1,82 @@
-﻿namespace OrenHakaton.Controllers
-{
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Collections.Generic;
-    using System.Security.Cryptography;
+﻿//namespace OrenHakaton.Controllers
+//{
+//    using System.Text;
+//    using System.Threading.Tasks;
+//    using System.Collections.Generic;
+//    using System.Security.Cryptography;
 
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Cors;
-    using Microsoft.EntityFrameworkCore;
+//    using Microsoft.AspNetCore.Mvc;
+//    using Microsoft.AspNetCore.Cors;
+//    using Microsoft.EntityFrameworkCore;
 
-    using NLog;
-    using OrenHakaton.Models;
+//    using NLog;
+//    using OrenHakaton.Models;
 
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
-    {
-        private static readonly Logger logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
-        private readonly OrenHakatonContext _context;
+//    [Route("api/[controller]")]
+//    [ApiController]
+//    public class AuthController : ControllerBase
+//    {
+//        private static readonly Logger logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+//        private readonly OrenHakatonContext _context;
 
-        public AuthController()
-        {
-            _context = new OrenHakatonContext();
-        }
+//        public AuthController()
+//        {
+//            _context = new OrenHakatonContext();
+//        }
 
-        [EnableCors("MyPolicy")]
-        [Route("GetAllUsers")]
-        [HttpGet]
-        public async Task<List<Users>> Get()
-        {
-            logger.Trace("GetAllUsers called");
+//        [EnableCors("MyPolicy")]
+//        [Route("GetAllUsers")]
+//        [HttpGet]
+//        public async Task<List<Users>> Get()
+//        {
+//            logger.Trace("GetAllUsers called");
 
-            return await _context.Users.ToListAsync();
-        }
+//            return await _context.Users.ToListAsync();
+//        }
 
-        [EnableCors("MyPolicy")]
-        [Route("AddUser")]
-        [HttpPost]
-        public ActionResult<Users> AddUser([FromBody] Users user)
-        {
-            logger.Trace("AddUser called");
+//        [EnableCors("MyPolicy")]
+//        [Route("AddUser")]
+//        [HttpPost]
+//        public ActionResult<Users> AddUser([FromBody] Users user)
+//        {
+//            logger.Trace("AddUser called");
 
-            if (user == null)
-                return NoContent();
+//            if (user == null)
+//                return NoContent();
 
-            user.Password = GetHashedPassword(user.Password);
+//            user.Password = GetHashedPassword(user.Password);
 
-            _context.Users.Add(user);
-            _context.SaveChanges();
+//            _context.Users.Add(user);
+//            _context.SaveChanges();
 
-            return Ok(user);
-        }
+//            return Ok(user);
+//        }
 
-        [EnableCors("MyPolicy")]
-        [Route("CheckAuthoriz")]
-        [HttpPost]
-        public async Task<Users> GetUser([FromBody] CheckUserDto user)
-        {
-            logger.Trace("CheckAuthoriz called");
+//        [EnableCors("MyPolicy")]
+//        [Route("CheckAuthoriz")]
+//        [HttpPost]
+//        public async Task<Users> GetUser([FromBody] CheckUserDto user)
+//        {
+//            logger.Trace("CheckAuthoriz called");
 
-            var dbUser = await _context.Users.FirstOrDefaultAsync(x => x.Mail == user.Mail);
+//            var dbUser = await _context.Users.FirstOrDefaultAsync(x => x.Mail == user.Mail);
 
-            if (dbUser == null)
-                return null;
+//            if (dbUser == null)
+//                return null;
 
-            if (dbUser.Password == GetHashedPassword(user.Password))
-                return dbUser;
+//            if (dbUser.Password == GetHashedPassword(user.Password))
+//                return dbUser;
 
-            return null;
-        }
+//            return null;
+//        }
 
-        public string GetHashedPassword(string password)
-        {
-            var sha1 = new SHA1CryptoServiceProvider();
-            var data = Encoding.ASCII.GetBytes(password);
-            var sha1data = sha1.ComputeHash(data);
+//        public string GetHashedPassword(string password)
+//        {
+//            var sha1 = new SHA1CryptoServiceProvider();
+//            var data = Encoding.ASCII.GetBytes(password);
+//            var sha1data = sha1.ComputeHash(data);
 
-            return Encoding.Default.GetString(sha1data);
-        }
-    }
-}
+//            return Encoding.Default.GetString(sha1data);
+//        }
+//    }
+//}
