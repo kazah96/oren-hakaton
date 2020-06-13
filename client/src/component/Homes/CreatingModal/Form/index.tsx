@@ -8,19 +8,19 @@ const CreatingForm = (formData: any) => {
       <div className="section">
         <div className="label">Адрес</div>
         <div className="fieldContainer">
-          <Input name="adress" size="large" defaultValue={formData.adress} />
+          <Input name="Address" size="large" defaultValue={formData.Address} />
         </div>
       </div>
       <div className="section">
         <div className="label">Кол-во квартир</div>
         <div className="fieldContainer">
-          <Input name="count" size="large" defaultValue={formData.count} />
+          <Input name="AparmentsCount" size="large" defaultValue={formData.AparmentsCount} />
         </div>
       </div>
       <div className="section">
         <div className="label">Стостояние</div>
         <div className="fieldContainer">
-          <Input name="state" size="large" defaultValue={formData.state} />
+          <Input name="State" size="large" defaultValue={formData.State} />
         </div>
       </div>
     </div>

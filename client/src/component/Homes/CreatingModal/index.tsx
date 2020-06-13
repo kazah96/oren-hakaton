@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Modal } from 'antd'
 
 import Form from './Form'
 
+const defaultForm = {
+  Address: '',
+  AparmentsCount: null,
+  State: null,
+}
+
 // @ts-ignore
 const CreatingModal = ({ visible, onCancel, onSubmitForm, defaultFormData, okText }) => {
   const onSubmit = (data: any) => {
+    debugger
     onSubmitForm(data)
   }
 
@@ -21,7 +28,7 @@ const CreatingModal = ({ visible, onCancel, onSubmitForm, defaultFormData, okTex
       destroyOnClose
     >
       <div className="create_modal">
-        <Form formData={defaultFormData} />
+        <Form formData={defaultFormData || defaultForm} />
       </div>
     </Modal>
   )

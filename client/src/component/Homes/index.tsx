@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Button, message } from 'antd'
 
 import CreatingModal from './CreatingModal'
+import TableComponents from './TableComponents'
+import { useApi, HomesApi } from '../../api'
 
 const defaultModalSettings = {
   visible: false,
@@ -11,6 +13,10 @@ const defaultModalSettings = {
 
 const Homes = () => {
   const [creactingModalSettings, setCreactingModalSettings] = useState(defaultModalSettings)
+
+  const { saveHome } = useApi({
+    api: HomesApi,
+  }) as any
 
   const changeCreatingModalSettings = (payload: any) => {
     setCreactingModalSettings({ ...creactingModalSettings, ...payload })
@@ -29,7 +35,7 @@ const Homes = () => {
   }
 
   const createItem = (formData: any) => {
-    message.success('Вход выполнен')
+    saveHome(formData).then(() => message.success('Вход выполнен'))
   }
 
   const handleSubmitCreatingForm = (formData: any) => {
@@ -49,6 +55,7 @@ const Homes = () => {
         onCancel={handleCancelCreatingModal}
         onSubmitForm={handleSubmitCreatingForm}
       />
+      <TableComponents />
     </div>
   )
 }
