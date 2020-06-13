@@ -25,16 +25,18 @@ const App = () => {
     <>
       <Router>
         <Menu />
-        <Switch>
-          <Route exact path="/" render={LoginComponent} />
-          <Route exact path="/login" render={LoginComponent} />
-          <Route exact path="/register" render={RegisterComponent} />
-          <Route exact path="/homes" render={HomesComponent} />
-          <Route exact path="/staff" render={StaffComponent} />
-          <Route exact path="/proposal" render={ProposalComponent} />
-          <Route exact path="/polling" render={PollingComponent} />
-          <Route exact path="/meetings" render={MeetingsComponent} />
-        </Switch>
+        <div className="container">
+          <Switch>
+            <Route exact path="/" render={LoginComponent} />
+            <Route exact path="/login" render={LoginComponent} />
+            <Route exact path="/register" render={RegisterComponent} />
+            <Route exact path="/homes" render={HomesComponent} />
+            <Route exact path="/staff" render={StaffComponent} />
+            <Route exact path="/proposal" render={ProposalComponent} />
+            <Route exact path="/polling" render={PollingComponent} />
+            <Route exact path="/meetings" render={MeetingsComponent} />
+          </Switch>
+        </div>
       </Router>
     </>
   )

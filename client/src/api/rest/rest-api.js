@@ -3,7 +3,7 @@ import restRequest from './restRequest'
 class RestApi {
   constructor(requestUrl) {
     this.requestUrl = requestUrl
-    this.apiUrl = 'https://55ac146c66b3.ngrok.io'
+    this.apiUrl = 'https://e47a2a88e9d6.ngrok.io'
   }
 
   getRestRequest = (request) => {
