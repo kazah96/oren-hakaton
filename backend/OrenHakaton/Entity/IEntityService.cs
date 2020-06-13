@@ -1,6 +1,7 @@
 ﻿namespace OrenHakaton.Controllers
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +9,10 @@
 
     public interface IEntityService
     {
-        List<IEntityDto> GetAll();
+        Task<List<IEntityDto>> GetAll();
 
-        IEntityDto Get(JObject jObject);
+        Task<IEntityDto> Get(JObject jObject);
 
-        ActionResult<IEntityDto> Add(JObject jObject);
+        Task<ActionResult<IEntityDto>> Add(JObject jObject);
     }
 }

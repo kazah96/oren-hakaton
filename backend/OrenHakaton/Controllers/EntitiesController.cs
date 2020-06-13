@@ -1,5 +1,6 @@
 ﻿namespace OrenHakaton.Controllers
 {
+    using System.Threading.Tasks;
     using System.Collections.Generic;
 
     using Microsoft.AspNetCore.Mvc;
@@ -15,14 +16,14 @@
     [ApiController]
     public class EntitiesController : ControllerBase
     {
-        private static readonly Logger logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+        private static readonly Logger _logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
 
         [EnableCors("MyPolicy")]
         [Route("GetAll/{entity}")]
         [HttpGet]
-        public List<IEntityDto> GetAll([FromRoute] string entity)
+        public Task<List<IEntityDto>> GetAll([FromRoute] string entity)
         {
-            logger.Trace("GetAll called");
+            _logger.Trace("GetAll called");
 
             var service = UnityConfig._unityContainer.Resolve<IEntityService>(entity);
             var r = service.GetAll();
@@ -33,9 +34,9 @@
         [EnableCors("MyPolicy")]
         [Route("Add/{entity}")]
         [HttpPost]
-        public ActionResult<IEntityDto> Add([FromRoute] string entity, [FromBody] JObject jObject)
+        public Task<ActionResult<IEntityDto>> Add([FromRoute] string entity, [FromBody] JObject jObject)
         {
-            logger.Trace("Add called");
+            _logger.Trace("Add called");
 
             var service = UnityConfig._unityContainer.Resolve<IEntityService>(entity);
             var r = service.Add(jObject);
@@ -46,9 +47,9 @@
         [EnableCors("MyPolicy")]
         [Route("Get/{entity}")]
         [HttpPost]
-        public IEntityDto Get([FromRoute] string entity, [FromBody] JObject jObject)
+        public Task<IEntityDto> Get([FromRoute] string entity, [FromBody] JObject jObject)
         {
-            logger.Trace("Get called");
+            _logger.Trace("Get called");
 
             var service = UnityConfig._unityContainer.Resolve<IEntityService>(entity);
             var r = service.Get(jObject);

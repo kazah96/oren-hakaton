@@ -1,11 +1,12 @@
 ﻿namespace OrenHakaton.Controllers
 {
     using System.Text;
-    using System.Linq;
+    using System.Threading.Tasks;
     using System.Collections.Generic;
     using System.Security.Cryptography;
 
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
 
     using NLog;
     using AutoMapper;
@@ -31,7 +32,7 @@
             _mapper = mappingConfig.CreateMapper();
         }
 
-        public ActionResult<IEntityDto> Add(JObject jObject)
+        public async Task<ActionResult<IEntityDto>> Add(JObject jObject)
         {
             _logger.Trace("AuthorizationService Add");
 
@@ -43,17 +44,17 @@
             users.Password = GetHashedPassword(users.Password);
 
             _context.Users.Add(users);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return new OkResult();
         }
 
-        public IEntityDto Get(JObject jObject)
+        public async Task<IEntityDto> Get(JObject jObject)
         {
             _logger.Trace("AuthorizationService Get");
 
             UsersDto userDto = jObject.ToObject<UsersDto>();
-            var dbUser = _context.Users.FirstOrDefault(x => x.Mail == userDto.Mail);
+            var dbUser = await _context.Users.FirstOrDefaultAsync(x => x.Mail == userDto.Mail);
 
             if (dbUser == null)
                 return null;
@@ -64,11 +65,11 @@
             return null;
         }
 
-        public List<IEntityDto> GetAll()
+        public async Task<List<IEntityDto>> GetAll()
         {
             _logger.Trace("AuthorizationService GetAll");
 
-            var users = _context.Users.ToList();
+            var users = await _context.Users.ToListAsync();
             var entitiesDto = new List<IEntityDto>();
             var usersDto =  _mapper.Map<List<Users>, List<UsersDto>>(users);
 

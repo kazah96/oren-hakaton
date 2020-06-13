@@ -1,6 +1,6 @@
 ﻿namespace OrenHakaton.Controllers
 {
-    using System.Linq;
+    using System.Threading.Tasks;
     using System.Collections.Generic;
 
     using Microsoft.AspNetCore.Mvc;
@@ -11,6 +11,7 @@
 
     using OrenHakaton.Models;
     using OrenHakaton.Models.DtoModels;
+    using Microsoft.EntityFrameworkCore;
 
     public class RequestsService : IEntityService
     {
@@ -29,7 +30,7 @@
             _context = new OrenHakatonContext();
         }
 
-        public ActionResult<IEntityDto> Add(JObject jObject)
+        public async Task<ActionResult<IEntityDto>> Add(JObject jObject)
         {
             _logger.Trace("RequestsService Add");
 
@@ -39,26 +40,26 @@
                 return new NoContentResult();
 
             _context.Requests.Add(requests);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return new OkResult();
         }
 
-        public IEntityDto Get(JObject jObject)
+        public async Task<IEntityDto> Get(JObject jObject)
         {
             _logger.Trace("RequestsService Get");
 
             RequestsDto requestsDto = jObject.ToObject<RequestsDto>();
-            var dbUser = _context.Requests.FirstOrDefault(x => x.RequestId == requestsDto.RequestId);
+            var dbUser = await _context.Requests.FirstOrDefaultAsync(x => x.RequestId == requestsDto.RequestId);
 
              return _mapper.Map<Requests, RequestsDto>(dbUser);
         }
 
-        public List<IEntityDto> GetAll()
+        public async Task<List<IEntityDto>> GetAll()
         {
             _logger.Trace("RequestsService GetAll");
 
-            var requests = _context.Requests.ToList();
+            var requests = await _context.Requests.ToListAsync();
             var entitiesDto = new List<IEntityDto>();
             var requestsDto =  _mapper.Map<List<Requests>, List<RequestsDto>>(requests);
 
