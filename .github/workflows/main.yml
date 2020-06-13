@@ -36,4 +36,4 @@ jobs:
     - name: Deploy test
       run: |
         cd client
-        yarn deploy:test
+        yarn surge --project ./build --domain oren-hakaton-${GITHUB_REF##*/}.surge.sh
