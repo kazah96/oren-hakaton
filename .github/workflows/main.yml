@@ -18,4 +18,5 @@ jobs:
         cd client
         yarn
         yarn check:lint
+        yarn check:ts
         yarn check:style
