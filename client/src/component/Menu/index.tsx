@@ -1,8 +1,8 @@
-import React from 'react';
-import './style.css';
+import React from 'react'
+import './style.css'
 
 const Menu = () => {
-  return(
+  return (
     <div className="menu_top">
       <ul>
         <li>Дома</li>

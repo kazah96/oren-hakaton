@@ -1,11 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const Register = () => {
-  return(
-    <div>
-      333
-    </div>
-  )
+  return <div>333</div>
 }
 
 export default Register
