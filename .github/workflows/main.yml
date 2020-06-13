@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Build
+    - uses: actions/checkout@v2         
+    - uses: rlespinasse/github-slug-action@master
+    - name: Install
       run: |
         cd client 
         yarn
@@ -29,3 +29,13 @@ jobs:
       run: |
         cd client 
         yarn check:style
+    - name: Build
+      run: |
+        cd client
+        yarn build
+
+    - name: Deploy test
+      run: |
+        cd client
+        yarn add surge
+        yarn surge --token ${{secrets.SURGE_TOKEN}} --project ./build --domain oren-hakaton-${{ env.GITHUB_HEAD_REF_SLUG }}.surge.sh

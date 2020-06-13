@@ -14,6 +14,7 @@
             _unityContainer = new UnityContainer();
             _unityContainer.RegisterType(typeof(IEntityService), typeof(AuthorizationService), "Authorization", new HierarchicalLifetimeManager());
             _unityContainer.RegisterType(typeof(IEntityService), typeof(RequestsService), "Requests", new HierarchicalLifetimeManager());
+            _unityContainer.RegisterType(typeof(IEntityService), typeof(HousesService), "Houses", new HierarchicalLifetimeManager());
         }
     }
 }

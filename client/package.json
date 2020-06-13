@@ -37,6 +37,8 @@
     "check:style": "yarn prettier --check **/*{ts,tsx,js,jsx}",
     "check:lint": "yarn eslint --fix **/*{ts,tsx,js,jsx}",
     "check:ts": "yarn tsc --noEmit",
+    "check:all": "yarn check:lint && yarn check:ts && yarn check:lint",
+    "deploy:test": "surge --project ./build --domain oren-hakaton-test.surge.sh",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

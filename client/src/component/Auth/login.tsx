@@ -8,12 +8,16 @@ const layout = {
   wrapperCol: { span: 5 },
 }
 
+/* eslint-disable */
 const validateMessages = {
+  // eslint-ignore
   required: '${label} обязательное поле!',
   types: {
+    // eslint-ignore
     email: '${label} не правильный формат!',
   },
 }
+/* eslint-enable */
 
 const Login = () => {
   const { CheckUser } = useApi({
