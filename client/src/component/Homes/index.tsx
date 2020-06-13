@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useState, useEffect } from 'react'
 import { Button, message } from 'antd'
 
@@ -16,10 +17,10 @@ const Homes = () => {
   const [tableData, setTableData] = useState(false)
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     getAllHouses().then((result: any) => {
       !tableData && setTableData(result.map((item: any) => ({ ...item, key: item.houseId })))
     })
+    // eslint-disable-next-line
   }, [tableData])
 
   const { saveHome, getAllHouses } = useApi({
