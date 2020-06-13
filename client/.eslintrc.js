@@ -41,5 +41,20 @@ module.exports = {
     'react/display-name': 'off',
     quotes: [formatLevel, 'single', { allowTemplateLiterals: true }],
     'jsx-quotes': [formatLevel, 'prefer-single'],
+    semi: 'off',
+    '@typescript-eslint/semi': [formatLevel, 'never'],
+    '@typescript-eslint/member-delimiter-style': [
+      formatLevel,
+      {
+        multiline: {
+          delimiter: 'none',
+          requireLast: false,
+        },
+        singleline: {
+          delimiter: 'semi',
+          requireLast: false,
+        },
+      },
+    ],
   },
 }
