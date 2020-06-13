@@ -13,9 +13,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Linter + Prettier
+    - name: Build
       run: |
-        cd client
+        cd client 
         yarn
+    - name: Eslint
+      run: |
+        cd client 
         yarn check:lint
+    - name: TS
+      run: |
+        cd client 
+        yarn check:ts
+    - name: Prettier
+      run: |
+        cd client 
         yarn check:style

@@ -36,6 +36,7 @@
   "scripts": {
     "check:style": "yarn prettier --check **/*{ts,tsx,js,jsx}",
     "check:lint": "yarn eslint --fix **/*{ts,tsx,js,jsx}",
+    "check:ts": "yarn tsc --noEmit",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

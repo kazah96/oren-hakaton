@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { Form, Input, Button, message } from 'antd';
-import { useApi, UserApi } from '../../api/index';
+import { Form, Input, Button, message } from 'antd'
+import { useApi, UserApi } from '../../api'
 
 const layout = {
   labelCol: { span: 10 },
@@ -16,23 +16,19 @@ const validateMessages = {
 }
 
 const Login = () => {
-  const {
-    CheckUser
-  } = useApi({
-    api: UserApi
-  });
+  const { CheckUser } = useApi({
+    api: UserApi,
+  }) as any
 
   const onFinish = (data: any) => {
-    CheckUser(data)
-        .then((result: any) => {
-          debugger
-          message.success('Вход выполнен');
-        })
-  };
+    CheckUser(data).then(() => {
+      message.success('Вход выполнен')
+    })
+  }
 
   return (
     <Form {...layout} onFinish={onFinish} name="login-form" validateMessages={validateMessages}>
-      <Form.Item name={['user', 'Mail']} label="Email" rules={[{ required: true,type: 'email' }]}>
+      <Form.Item name={['user', 'Mail']} label="Email" rules={[{ required: true, type: 'email' }]}>
         <Input />
       </Form.Item>
       <Form.Item name={['user', 'Password']} label="Password" rules={[{ required: true }]}>

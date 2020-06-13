@@ -1,9 +1,9 @@
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 
-export default (method, urlRelativeToApp, params) => {
+export default (method: any, urlRelativeToApp: any, params: any) => {
   const url = urlRelativeToApp
 
-  let config = { method, url }
+  let config: AxiosRequestConfig = { method, url }
 
   const returnFullResponse = params && params.returnFullResponse
 
@@ -25,6 +25,7 @@ export default (method, urlRelativeToApp, params) => {
     }
   }
 
+  // @ts-ignore
   config.crossDomain = true
 
   return axios.request(config).then((response) => (returnFullResponse ? response : response.data))
