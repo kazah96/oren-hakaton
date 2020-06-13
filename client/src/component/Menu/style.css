@@ -20,6 +20,15 @@
   border-bottom: 1px solid #ccc0;
 }
 
+.menu_top ul li a{
+  color: black;
+}
+
+.menu_top ul li a:hover{
+  color: #00be02;
+}
+
+
 .menu_top ul li:hover {
   color: #00be02;
   border-bottom: 1px solid;

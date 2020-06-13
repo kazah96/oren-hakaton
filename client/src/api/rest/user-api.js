@@ -1,9 +1,9 @@
 import RestApi from './rest-api'
-
 class UserApi extends RestApi {
-  CheckUser = () => {
+  CheckUser = (data) => {
     return this.postRestRequest({
-      url: 'api/Auth/CheckAuthoriz',
+      url: 'api/Entities/Get/Authorization',
+      data: data.user,
     }).then((result) => {
       return Promise.resolve(result.content)
     })
@@ -11,7 +11,7 @@ class UserApi extends RestApi {
 
   saveUser = (data) => {
     return this.postRestRequest({
-      url: 'api/Auth/AddUser',
+      url: 'api/Entities/Add/Authorization',
       data: data.user,
     }).then((result) => {
       return Promise.resolve(result.content)
