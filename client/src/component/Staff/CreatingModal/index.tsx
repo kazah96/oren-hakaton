@@ -4,9 +4,9 @@ import { Modal } from 'antd'
 import Form from './Form'
 
 const defaultForm = {
-  Address: '',
-  AparmentsCount: null,
-  State: null,
+  name: '',
+  surname: '',
+  specialties: '',
 }
 
 // @ts-ignore
