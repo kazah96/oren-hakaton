@@ -28,6 +28,8 @@
         public string Title { get; set; }
         public string Yandex { get; set; }
         public string Google { get; set; }
+        public string Mail { get; set; }
+        public string Password { get; set; }
 
         public List<Houses> Houses { get; } = new List<Houses>();
     }
@@ -89,6 +91,7 @@
         public string Name { get; set; }
         public string Address { get; set; }
         public string Status { get; set; }
+        public string Note { get; set; }
 
         public List<ManagementCompanies> ManagementCompanies { get; } = new List<ManagementCompanies>();
     }
@@ -111,6 +114,7 @@
         public string Link { get; set; }
         public string Result { get; set; }
 
+        public List<Houses> Houses { get; } = new List<Houses>();
         public List<ManagementCompanies> ManagementCompanies { get; } = new List<ManagementCompanies>();
     }
 }

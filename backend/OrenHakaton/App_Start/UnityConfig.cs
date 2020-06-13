@@ -4,6 +4,7 @@
     using Unity.Lifetime;
 
     using OrenHakaton.Controllers;
+    using OrenHakaton.Models;
 
     public static class UnityConfig
     {
@@ -12,9 +13,12 @@
         static UnityConfig()
         {
             _unityContainer = new UnityContainer();
-            _unityContainer.RegisterType(typeof(IEntityService), typeof(AuthorizationService), "Authorization", new HierarchicalLifetimeManager());
-            _unityContainer.RegisterType(typeof(IEntityService), typeof(RequestsService), "Requests", new HierarchicalLifetimeManager());
-            _unityContainer.RegisterType(typeof(IEntityService), typeof(HousesService), "Houses", new HierarchicalLifetimeManager());
+
+            _unityContainer.RegisterType(typeof(IEntityService), typeof(AuthorizationService), "authorization", new HierarchicalLifetimeManager());
+            _unityContainer.RegisterType(typeof(IEntityService), typeof(RequestsService), "requests", new HierarchicalLifetimeManager());
+            _unityContainer.RegisterType(typeof(IEntityService), typeof(HousesService), "houses", new HierarchicalLifetimeManager());
+            _unityContainer.RegisterType(typeof(IEntityService), typeof(EmployesService), "employes", new HierarchicalLifetimeManager());
+            _unityContainer.RegisterType(typeof(IEntityService), typeof(MeetingService), "meetings", new HierarchicalLifetimeManager());
         }
     }
 }

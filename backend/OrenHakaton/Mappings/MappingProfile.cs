@@ -17,6 +17,15 @@
 
             CreateMap<Houses, HousesDto>();
             CreateMap<HousesDto, Houses>();
+
+            CreateMap<EmployeesMCDto, EmployeesMC>().ForMember(opt => opt.Specialties, dto => dto.MapFrom(src => src.Specialties));
+            CreateMap<EmployeesMC, EmployeesMCDto>().ForMember(dto => dto.Specialties, opt => opt.MapFrom(src => src.Specialties)); ;
+
+            CreateMap<Specialties, SpecialtiesDto>();
+            CreateMap<SpecialtiesDto, Specialties>();
+
+            CreateMap<Meetings, MeetingsDto>();
+            CreateMap<MeetingsDto, Meetings>();
         }
     }
 }

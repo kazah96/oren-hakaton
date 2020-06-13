@@ -41,7 +41,7 @@
             if (users == null)
                 return new NoContentResult();
 
-            users.Password = GetHashedPassword(users.Password);
+            //users.Password = GetHashedPassword(users.Password);
 
             _context.Users.Add(users);
             await _context.SaveChangesAsync();
@@ -59,7 +59,7 @@
             if (dbUser == null)
                 return null;
 
-            if (dbUser.Password == GetHashedPassword(userDto.Password))
+            if (dbUser.Password == userDto.Password)//GetHashedPassword(userDto.Password))
                 return _mapper.Map<Users, UsersDto>(dbUser);
 
             return null;

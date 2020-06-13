@@ -25,7 +25,7 @@
         {
             _logger.Trace("GetAll called");
 
-            var service = UnityConfig._unityContainer.Resolve<IEntityService>(entity);
+            var service = UnityConfig._unityContainer.Resolve<IEntityService>(entity.ToLower());
             var r = service.GetAll();
             
             return r;
@@ -38,7 +38,7 @@
         {
             _logger.Trace("Add called");
 
-            var service = UnityConfig._unityContainer.Resolve<IEntityService>(entity);
+            var service = UnityConfig._unityContainer.Resolve<IEntityService>(entity.ToLower());
             var r = service.Add(jObject);
 
             return r;
@@ -51,7 +51,7 @@
         {
             _logger.Trace("Get called");
 
-            var service = UnityConfig._unityContainer.Resolve<IEntityService>(entity);
+            var service = UnityConfig._unityContainer.Resolve<IEntityService>(entity.ToLower());
             var r = service.Get(jObject);
 
             return r;
