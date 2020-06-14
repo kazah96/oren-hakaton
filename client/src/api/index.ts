@@ -2,5 +2,6 @@ import RestApi from './rest/rest-api'
 import UserApi from './rest/user-api'
 import useApi from './hooks/useApi'
 import HomesApi from './rest/homes-api'
+import StaffApi from './rest/staff-api'
 
-export { RestApi, UserApi, useApi, HomesApi }
+export { RestApi, UserApi, useApi, HomesApi, StaffApi }
