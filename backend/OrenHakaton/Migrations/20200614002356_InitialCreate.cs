@@ -57,7 +57,8 @@ namespace OrenHakaton.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
-                    Status = table.Column<string>(nullable: true)
+                    Status = table.Column<string>(nullable: true),
+                    Note = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -72,7 +73,9 @@ namespace OrenHakaton.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true),
-                    Telephone = table.Column<string>(nullable: true)
+                    Telephone = table.Column<string>(nullable: true),
+                    Mail = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -108,6 +111,8 @@ namespace OrenHakaton.Migrations
                     Title = table.Column<string>(nullable: true),
                     Yandex = table.Column<string>(nullable: true),
                     Google = table.Column<string>(nullable: true),
+                    Mail = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
                     EmployeesMCEmployeeId = table.Column<int>(nullable: true),
                     MeetingsPollId = table.Column<int>(nullable: true),
                     PollsPollId = table.Column<int>(nullable: true),
@@ -151,7 +156,8 @@ namespace OrenHakaton.Migrations
                     Address = table.Column<string>(nullable: true),
                     ApartmentsCount = table.Column<string>(nullable: true),
                     State = table.Column<int>(nullable: false),
-                    ManagementCompaniesManagementCompanyId = table.Column<int>(nullable: true)
+                    ManagementCompaniesManagementCompanyId = table.Column<int>(nullable: true),
+                    MeetingsPollId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -161,6 +167,12 @@ namespace OrenHakaton.Migrations
                         column: x => x.ManagementCompaniesManagementCompanyId,
                         principalTable: "ManagementCompanies",
                         principalColumn: "ManagementCompanyId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Houses_Meetings_MeetingsPollId",
+                        column: x => x.MeetingsPollId,
+                        principalTable: "Meetings",
+                        principalColumn: "PollId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -206,6 +218,11 @@ namespace OrenHakaton.Migrations
                 name: "IX_Houses_ManagementCompaniesManagementCompanyId",
                 table: "Houses",
                 column: "ManagementCompaniesManagementCompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Houses_MeetingsPollId",
+                table: "Houses",
+                column: "MeetingsPollId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ManagementCompanies_EmployeesMCEmployeeId",

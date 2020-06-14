@@ -11,6 +11,7 @@
         public string Link { get; set; }
         public string Result { get; set; }
 
+        public List<Houses> Houses { get; } = new List<Houses>();
         public List<ManagementCompanies> ManagementCompanies { get; } = new List<ManagementCompanies>();
     }
 }

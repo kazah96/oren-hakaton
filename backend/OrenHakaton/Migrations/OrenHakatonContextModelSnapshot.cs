@@ -75,12 +75,17 @@ namespace OrenHakaton.Migrations
                     b.Property<int?>("ManagementCompaniesManagementCompanyId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("MeetingsPollId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("State")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("HouseId");
 
                     b.HasIndex("ManagementCompaniesManagementCompanyId");
+
+                    b.HasIndex("MeetingsPollId");
 
                     b.ToTable("Houses");
                 });
@@ -97,8 +102,14 @@ namespace OrenHakaton.Migrations
                     b.Property<string>("Google")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Mail")
+                        .HasColumnType("TEXT");
+
                     b.Property<int?>("MeetingsPollId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("PollsPollId")
                         .HasColumnType("INTEGER");
@@ -174,6 +185,9 @@ namespace OrenHakaton.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Note")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Status")
                         .HasColumnType("TEXT");
 
@@ -243,6 +257,10 @@ namespace OrenHakaton.Migrations
                     b.HasOne("OrenHakaton.Models.ManagementCompanies", null)
                         .WithMany("Houses")
                         .HasForeignKey("ManagementCompaniesManagementCompanyId");
+
+                    b.HasOne("OrenHakaton.Models.Meetings", null)
+                        .WithMany("Houses")
+                        .HasForeignKey("MeetingsPollId");
                 });
 
             modelBuilder.Entity("OrenHakaton.Models.ManagementCompanies", b =>
