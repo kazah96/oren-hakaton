@@ -1,13 +1,33 @@
 import restRequest from './restRequest'
 import { AxiosRequestConfig } from 'axios'
+import defaultApiUrl from './default-url'
+
+const getCurrentUrl = (): string | null => {
+  return localStorage.getItem('api_url')
+}
+
+const setCurrentUrl = (url: string): void => {
+  localStorage.setItem('api_url', url)
+}
+
+const currentApiUrl = getCurrentUrl()
+
+console.log('Default api is ' + defaultApiUrl)
+console.log('Current api url is ' + currentApiUrl)
+
+if (!currentApiUrl) {
+  setCurrentUrl(defaultApiUrl)
+}
 
 class RestApi {
   requestUrl: string
-  apiUrl: string
 
   constructor(requestUrl: string) {
     this.requestUrl = requestUrl
-    this.apiUrl = 'https://eface19f86c5.ngrok.io'
+  }
+
+  get apiUrl(): string {
+    return getCurrentUrl() || defaultApiUrl
   }
 
   getRestRequest = (request: AxiosRequestConfig) => {
