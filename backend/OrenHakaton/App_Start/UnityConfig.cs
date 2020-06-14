@@ -4,7 +4,6 @@
     using Unity.Lifetime;
 
     using OrenHakaton.Controllers;
-    using OrenHakaton.Models;
 
     public static class UnityConfig
     {

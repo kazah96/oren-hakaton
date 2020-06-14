@@ -54,12 +54,12 @@
             _logger.Trace("AuthorizationService Get");
 
             UsersDto userDto = jObject.ToObject<UsersDto>();
-            var dbUser = await _context.Users.FirstOrDefaultAsync(x => x.Mail == userDto.Mail);
+            var dbUser = await _context.Users.FirstOrDefaultAsync(x => x.Telephone == userDto.Telephone);
 
             if (dbUser == null)
                 return null;
 
-            if (dbUser.Telephone == userDto.Telephone)//GetHashedPassword(userDto.Password))
+            if (dbUser.Password == userDto.Password)//GetHashedPassword(userDto.Password))
                 return _mapper.Map<Users, UsersDto>(dbUser);
 
             return null;
