@@ -59,7 +59,7 @@
             if (dbUser == null)
                 return null;
 
-            if (dbUser.Password == userDto.Password)//GetHashedPassword(userDto.Password))
+            if (dbUser.Telephone == userDto.Telephone)//GetHashedPassword(userDto.Password))
                 return _mapper.Map<Users, UsersDto>(dbUser);
 
             return null;

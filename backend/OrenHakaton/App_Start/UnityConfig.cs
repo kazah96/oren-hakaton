@@ -19,6 +19,7 @@
             _unityContainer.RegisterType(typeof(IEntityService), typeof(HousesService), "houses", new HierarchicalLifetimeManager());
             _unityContainer.RegisterType(typeof(IEntityService), typeof(EmployesService), "employes", new HierarchicalLifetimeManager());
             _unityContainer.RegisterType(typeof(IEntityService), typeof(MeetingService), "meetings", new HierarchicalLifetimeManager());
+            _unityContainer.RegisterType(typeof(IEntityService), typeof(ManagementCompaniesService), "managecomp", new HierarchicalLifetimeManager());
         }
     }
 }
