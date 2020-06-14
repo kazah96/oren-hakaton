@@ -12,7 +12,7 @@ class UserApi extends RestApi {
 
   CheckUser = (data: Data) => {
     return this.postRestRequest({
-      url: 'api/Entities/get/Authorization',
+      url: 'api/Entities/get/managecomp',
       data: data.user,
     }).then((result) => {
       return Promise.resolve(result)
@@ -21,7 +21,7 @@ class UserApi extends RestApi {
 
   saveUser = (data: Data) => {
     return this.postRestRequest({
-      url: 'api/Entities/Add/Authorization',
+      url: 'api/Entities/Add/managecomp',
       data: data.user,
     }).then((result) => {
       return Promise.resolve(result)

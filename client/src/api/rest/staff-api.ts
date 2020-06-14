@@ -12,7 +12,7 @@ class StaffApi extends RestApi {
 
   getAllStaff = () => {
     return this.getRestRequest({
-      url: 'api/Entities/GetAll/EmployeesMC',
+      url: 'api/Entities/GetAll/Employes',
     }).then((result) => {
       return Promise.resolve(result)
     })
@@ -20,7 +20,7 @@ class StaffApi extends RestApi {
 
   saveStaff = (data: Data) => {
     return this.postRestRequest({
-      url: 'api/Entities/Add/EmployeesMC',
+      url: 'api/Entities/Add/Employes',
       data,
     }).then((result) => {
       return Promise.resolve(result)

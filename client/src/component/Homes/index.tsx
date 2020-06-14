@@ -52,7 +52,6 @@ const Homes = () => {
     handleCancelCreatingModal()
   }
 
-  console.log('aaaa', tableData)
   return (
     <div>
       <Button type="primary" onClick={handleAddItemClick}>
