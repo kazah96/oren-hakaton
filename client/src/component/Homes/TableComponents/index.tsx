@@ -17,7 +17,6 @@ const TableComponents = (dataSource: any) => {
     },
   ]
   const data = [dataSource.tableData]
-  console.log(data)
   return (
     <Table
       columns={columns}

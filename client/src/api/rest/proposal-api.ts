@@ -2,25 +2,25 @@ import RestApi from './rest-api'
 
 interface Data {
   user: {
-    name: string
+    address: string
   }
 }
-class StaffApi extends RestApi {
+class ProposalApi extends RestApi {
   constructor(requestUrl?: string) {
     super(requestUrl || '')
   }
 
-  getAllStaff = () => {
+  getAllProposal = () => {
     return this.getRestRequest({
-      url: 'api/Entities/GetAll/Employes',
+      url: 'api/Entities/GetAll/Requests',
     }).then((result) => {
       return Promise.resolve(result)
     })
   }
 
-  saveStaff = (data: Data) => {
+  saveProposal = (data: Data) => {
     return this.postRestRequest({
-      url: 'api/Entities/Add/Employes',
+      url: 'api/Entities/Add/Meetings',
       data,
     }).then((result) => {
       return Promise.resolve(result)
@@ -28,4 +28,4 @@ class StaffApi extends RestApi {
   }
 }
 
-export default StaffApi
+export default ProposalApi
